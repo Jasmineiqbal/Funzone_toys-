@@ -2,21 +2,14 @@ import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Row, Col, Container } from "react-bootstrap";
-import {BsHeart } from "react-icons/bs";
-import './card.css';
+import { BsHeart } from "react-icons/bs";
+import "./card.css";
 
 class Cards extends Component {
-  outsetStyle = {
-    width: "17rem",
-    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.3)", 
-    borderRadius: "10px", 
-    transition: "box-shadow 0.4s ease-in-out", 
-  };
 
   constructor(props) {
     super(props);
     this.state = {
-      // cartItems: [],
       wishlistItems: [],
       toys: [
         {
@@ -88,7 +81,7 @@ class Cards extends Component {
         {
           id: 8,
           image: "./toy8.0.jpg",
-          price: "$2000",
+          price: "$200",
           name: "Supermarket Cash Register Children's Toys",
           details:
             "Educational Simulation Checkout Cashier Boys And Girls Play House",
@@ -178,6 +171,7 @@ class Cards extends Component {
       ],
     };
   }
+
   AddToCartHandler = (id) => {
     this.setState((prevstate) => ({
       toys: prevstate.toys.map((toy) =>
@@ -199,7 +193,7 @@ class Cards extends Component {
         <Container>
           <Row className="my-3 ">
             {this.state.toys.map((toy) => (
-              <Col sm={6} md={3} key={toy.id} className="mb-3">
+              <Col xs={12} sm={6} md={4} lg={3} key={toy.id} className="mb-3">
                 <Card className="card-hover" style={this.outsetStyle}>
                   <Card.Img variant="top" src={toy.image} />
                   <Card.Body>
@@ -220,7 +214,6 @@ class Cards extends Component {
                       <Button variant="outline-primary">
                         <BsHeart />
                       </Button>
-                      {/* <Button variant="outline-danger">Wishlist</Button> */}
                     </div>
                   </Card.Body>
                 </Card>
@@ -232,7 +225,7 @@ class Cards extends Component {
         <Container>
           <Row className="my-3 ">
             {this.state.toys1.map((toy) => (
-              <Col sm={6} md={3} key={toy.id} className="mb-3">
+              <Col xs={12} sm={6} md={4} lg={3} key={toy.id} className="mb-3">
                 <Card className="card-hover" style={this.outsetStyle}>
                   <Card.Img variant="top" src={toy.image} />
                   <Card.Body>
@@ -253,7 +246,6 @@ class Cards extends Component {
                       <Button variant="outline-primary">
                         <BsHeart />
                       </Button>
-                      {/* <Button variant="outline-danger">Wishlist</Button> */}
                     </div>
                   </Card.Body>
                 </Card>

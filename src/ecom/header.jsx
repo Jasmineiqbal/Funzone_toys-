@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { BsCart, BsHeart } from "react-icons/bs";
@@ -7,15 +7,18 @@ import logoimage from "./logo2.0.jpg";
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignInAlt } from '@fortawesome/free-solid-svg-icons'; 
-
-
-
+import Offcanvas from "react-bootstrap/Offcanvas";
 import Form from "react-bootstrap/Form";
 
 const Header = () => {
+
+ const [show, setShow] = useState(false);
+
+ const handleClose = () => setShow(false);
+ const handleShow = () => setShow(true);
+
   return (
     <div>
-     
       <div className="header bg-primary text-white p-3 text-center">
         <a href="/" className="text-black text-decoration-none">
           <h5>
@@ -94,18 +97,39 @@ const Header = () => {
                 <Nav.Link href="#wishlist">
                   <BsHeart />
                 </Nav.Link>
-                <Button
-                  variant="outline-primary"
-                  className="d-flex align-items-center"
-                >
+                <Button variant="primary" onClick={handleShow}>
                   <FontAwesomeIcon
                     icon={faSignInAlt}
                     style={{
                       background: "light blue",
                     }}
                   />
-                  <span>Log In</span>
+                  Log in
                 </Button>
+
+                <Offcanvas show={show} onHide={handleClose}>
+                  <Offcanvas.Header closeButton>
+                    <Offcanvas.Title>
+                      <h2>Log in</h2>
+                    </Offcanvas.Title>
+                  </Offcanvas.Header>
+                  <Offcanvas.Body>
+                    <Form>
+                      <Form.Group className="mb-3" controlId="formGroupEmail">
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control type="email" placeholder="Enter email" />
+                      </Form.Group>
+                      <Form.Group
+                        className="mb-3"
+                        controlId="formGroupPassword"
+                      >
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control type="password" placeholder="Password" />
+                      </Form.Group>
+                      <Button>Submit</Button>
+                    </Form>
+                  </Offcanvas.Body>
+                </Offcanvas>
               </Nav>
             </Navbar.Collapse>
           </Navbar>
