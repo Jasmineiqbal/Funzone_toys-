@@ -1,4 +1,4 @@
-// import "./App.css";
+
  import Header from "./ecom/header";
  import Cards from "./ecom/card";
 import Footer from "./ecom/footer";
